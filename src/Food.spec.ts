@@ -1,4 +1,5 @@
 import EmptyFoodNameError from "./errors/EmptyFoodNameErros";
+import InvalidFoodAmount from "./errors/InvalidFoodAmount";
 import Food from "./Food";
 
 describe("Food", () => {
@@ -32,5 +33,18 @@ describe("Food", () => {
         };
 
         expect(() => new Food('', 'g', baseValues)).toThrowError(EmptyFoodNameError);
+    });
+
+    test("create food with 0 amount", () => {
+        const baseValues = {
+            amount: 0,
+            fat: 30,
+            carbohydrate: 40,
+            protein: 65,
+            calories: 124
+        };
+
+        expect(() => new Food('rice', 'g', baseValues)).toThrowError(InvalidFoodAmount);
+
     })
 })
