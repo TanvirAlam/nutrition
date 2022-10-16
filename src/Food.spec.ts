@@ -1,3 +1,4 @@
+import EmptyFoodNameError from "./errors/EmptyFoodNameErros";
 import Food from "./Food";
 
 describe("Food", () => {
@@ -19,6 +20,17 @@ describe("Food", () => {
         expect(food.getBaseValues().carbohydrate).toEqual(40);
         expect(food.getBaseValues().protein).toEqual(65);
         expect(food.getBaseValues().calories).toEqual(124);
+    });
 
+    test("create food with empty name", () => {
+        const baseValues = {
+            amount: 100,
+            fat: 30,
+            carbohydrate: 40,
+            protein: 65,
+            calories: 124
+        };
+
+        expect(() => new Food('', 'g', baseValues)).toThrowError(EmptyFoodNameError);
     })
 })

@@ -1,3 +1,4 @@
+import EmptyFoodNameError from './errors/EmptyFoodNameErros';
 import Nutritions from './Nutritions'
 
 class Food {
@@ -6,7 +7,9 @@ class Food {
         private readonly unit: string,
         private readonly baseValues: Nutritions
     ) {
-
+        if (name.length === 0) {
+            throw new EmptyFoodNameError();
+        }
     }
 
     getName(): string {
