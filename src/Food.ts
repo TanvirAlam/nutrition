@@ -8,12 +8,19 @@ class Food {
         private readonly unit: string,
         private readonly baseValues: Nutritions
     ) {
-        if (name.length === 0) {
-            throw new EmptyFoodNameError();
-        }
+        this.validateName(name);
+        this.validateAmount(baseValues);
+    }
 
+    private validateAmount(baseValues: Nutritions) {
         if (baseValues.amount <= 0) {
             throw new InvalidFoodAmount(baseValues.amount);
+        }
+    }
+
+    private validateName(name: string) {
+        if (name.length === 0) {
+            throw new EmptyFoodNameError();
         }
     }
 
