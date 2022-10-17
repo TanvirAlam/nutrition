@@ -112,7 +112,7 @@ describe("Food", () => {
             food = new Food('rice', Units.GRAM, baseValues);
         });
 
-        test('change calories and calculatecurent values', () => {
+        test('change calories and calculate curent values', () => {
             food.changeCalories(211);
 
             const { calories, amount, fat, carbohydrate, protein } = food.getCurrentValues();
@@ -123,15 +123,37 @@ describe("Food", () => {
             expect(protein).toEqual(2);
         });
 
-        test('change fat and calculatecurent values', () => {
+        test('change fat and calculate curent values', () => {
             food.changeFat(20);
 
             const { calories, amount, fat, carbohydrate, protein } = food.getCurrentValues();
+            expect(fat).toEqual(20);
             expect(calories).toEqual(650);
             expect(amount).toEqual(500);
-            expect(fat).toEqual(20);
             expect(carbohydrate).toEqual(2250);
             expect(protein).toEqual(5);
+        });
+
+        test('change protien and calculate curent values', () => {
+            food.changeProtein(103);
+
+            const { calories, amount, fat, carbohydrate, protein } = food.getCurrentValues();
+            expect(protein).toEqual(103);
+            expect(amount).toEqual(10300);
+            expect(fat).toEqual(412);
+            expect(calories).toEqual(13390);
+            expect(carbohydrate).toEqual(46350);
+        });
+
+        test('change carbohydrate and calculate curent values', () => {
+            food.changeCarbohydrate(11);
+
+            const { calories, amount, fat, carbohydrate, protein } = food.getCurrentValues();
+            expect(carbohydrate).toEqual(11);
+            expect(protein).toEqual(1);
+            expect(amount).toEqual(3);
+            expect(fat).toEqual(1);
+            expect(calories).toEqual(4);
         });
     })
 });
