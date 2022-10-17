@@ -42,6 +42,10 @@ class Food {
     getCurrentValues(): Nutritions {
         return this.currentValues;
     }
+
+    changeAmount(amount: number) {
+        this.currentValues.amount = amount;
+    }
 }
 
 export default Food;
