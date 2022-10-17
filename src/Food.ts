@@ -48,10 +48,13 @@ class Food {
     changeAmount(amount: number) {
         this.validateAmount(amount);
         this.currentValues.amount = amount;
-        this.currentValues.calories = this.calculateNutritions("calories");
-        this.currentValues.fat = this.calculateNutritions("fat");
-        this.currentValues.carbohydrate = this.calculateNutritions("carbohydrate");
-        this.currentValues.protein = this.calculateNutritions("protein");
+        this.calculateNutrients(['calories', 'fat', 'carbohydrate', 'protein']);
+    }
+
+    calculateNutrients(nutrients: string[]) {
+        nutrients.map(nutrient => {
+            this.currentValues[nutrient] = this.calculateNutritions(nutrient);
+        })
     }
 
     calculateNutritions(nutrition: string) {
