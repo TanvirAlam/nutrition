@@ -83,14 +83,17 @@ describe("Food", () => {
     test('create food change amount and calculate the calories', () => {
         const baseValues = {
             amount: 100,
-            fat: 30,
-            carbohydrate: 40,
-            protein: 65,
-            calories: 124
+            fat: 30, //27
+            carbohydrate: 40, //35
+            protein: 65, //57
+            calories: 124 //108
         };
 
         const food = new Food('rice', Units.GRAM, baseValues);
         food.changeAmount(87);
+        expect(food.getCurrentValues().fat).toEqual(27);
+        expect(food.getCurrentValues().carbohydrate).toEqual(35);
+        expect(food.getCurrentValues().protein).toEqual(57);
         expect(food.getCurrentValues().calories).toEqual(108);
     })
 })
