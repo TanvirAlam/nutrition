@@ -21,6 +21,7 @@ describe("Food", () => {
         expect(food.getBaseValues().carbohydrate).toEqual(40);
         expect(food.getBaseValues().protein).toEqual(65);
         expect(food.getBaseValues().calories).toEqual(124);
+        expect(food.getCurrentValues()).toEqual(food.getBaseValues());
     });
 
     test("create food with empty name", () => {
