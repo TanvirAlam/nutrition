@@ -51,6 +51,19 @@ class Food {
         this.calculateNutrients(['calories', 'fat', 'carbohydrate', 'protein']);
     }
 
+    changeCalories(calories: number) {
+        this.currentValues.calories = calories;
+        this.currentValues.amount = this.calculateAmountFromNutrition('calories');
+        this.calculateNutrients(['fat', 'carbohydrate', 'protein']);
+    }
+
+    private calculateAmountFromNutrition(nutrition: string) {
+        return Math.ceil(
+            this.currentValues[nutrition] * this.baseValues.amount / this.baseValues[nutrition]
+        );
+    }
+
+
     calculateNutrients(nutrients: string[]) {
         nutrients.map(nutrient => {
             this.currentValues[nutrient] = this.calculateNutritions(nutrient);
