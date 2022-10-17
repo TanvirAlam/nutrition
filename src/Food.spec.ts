@@ -63,5 +63,20 @@ describe("Food", () => {
         food.changeAmount(23);
 
         expect(food.getCurrentValues().amount).toEqual(23);
+    });
+
+    test('create food with nagitive number', () => {
+        const baseValues = {
+            amount: 20,
+            fat: 30,
+            carbohydrate: 40,
+            protein: 65,
+            calories: 124
+        };
+
+        const food = new Food('rice', 'g', baseValues);
+
+        expect(() => food.changeAmount(-23)).toThrowError(InvalidFoodAmount);
+
     })
 })

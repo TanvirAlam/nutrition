@@ -11,13 +11,13 @@ class Food {
         private readonly baseValues: Nutritions
     ) {
         this.validateName(name);
-        this.validateAmount(baseValues);
+        this.validateAmount(baseValues.amount);
         this.currentValues = { ...baseValues };
     }
 
-    private validateAmount(baseValues: Nutritions) {
-        if (baseValues.amount <= 0) {
-            throw new InvalidFoodAmount(baseValues.amount);
+    private validateAmount(amount: number) {
+        if (amount <= 0) {
+            throw new InvalidFoodAmount(amount);
         }
     }
 
@@ -44,6 +44,7 @@ class Food {
     }
 
     changeAmount(amount: number) {
+        this.validateAmount(amount);
         this.currentValues.amount = amount;
     }
 }
