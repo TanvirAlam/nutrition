@@ -122,5 +122,16 @@ describe("Food", () => {
             expect(carbohydrate).toEqual(734);
             expect(protein).toEqual(2);
         });
+
+        test('change fat and calculatecurent values', () => {
+            food.changeFat(20);
+
+            const { calories, amount, fat, carbohydrate, protein } = food.getCurrentValues();
+            expect(calories).toEqual(650);
+            expect(amount).toEqual(500);
+            expect(fat).toEqual(20);
+            expect(carbohydrate).toEqual(2250);
+            expect(protein).toEqual(5);
+        });
     })
 });

@@ -57,6 +57,12 @@ class Food {
         this.calculateNutrients(['fat', 'carbohydrate', 'protein']);
     }
 
+    changeFat(fat: number) {
+        this.currentValues.fat = fat;
+        this.currentValues.amount = this.calculateAmountFromNutrition('fat');
+        this.calculateNutrients(['calories', 'carbohydrate', 'protein']);
+    }
+
     private calculateAmountFromNutrition(nutrition: string) {
         return Math.ceil(
             this.currentValues[nutrition] * this.baseValues.amount / this.baseValues[nutrition]
