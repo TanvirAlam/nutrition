@@ -46,6 +46,13 @@ class Food {
     changeAmount(amount: number) {
         this.validateAmount(amount);
         this.currentValues.amount = amount;
+        this.currentValues.calories = this.calculateCalories(amount);
+    }
+
+    calculateCalories(amount: number) {
+        return Math.ceil(
+            this.currentValues.amount * this.baseValues.calories / this.baseValues.amount
+        );
     }
 }
 
