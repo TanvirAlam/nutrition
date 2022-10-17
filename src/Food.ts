@@ -2,12 +2,14 @@ import EmptyFoodNameError from './errors/EmptyFoodNameErros';
 import InvalidFoodAmount from './errors/InvalidFoodAmount';
 import Nutritions from './Nutritions'
 
+import Units from './Units'
+
 class Food {
     private currentValues: Nutritions;
 
     constructor(
         private readonly name: string,
-        private readonly unit: string,
+        private readonly unit: Units,
         private readonly baseValues: Nutritions
     ) {
         this.validateName(name);

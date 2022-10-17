@@ -2,6 +2,8 @@ import EmptyFoodNameError from "./errors/EmptyFoodNameErros";
 import InvalidFoodAmount from "./errors/InvalidFoodAmount";
 import Food from "./Food";
 
+import Units from './Units';
+
 describe("Food", () => {
     test("create", () => {
         const baseValues = {
@@ -11,7 +13,7 @@ describe("Food", () => {
             protein: 65,
             calories: 124
         };
-        const food = new Food('rice', 'g', baseValues);
+        const food = new Food('rice', Units.GRAM, baseValues);
 
         expect(food).toBeDefined();
         expect(food.getName()).toEqual('rice');
@@ -33,7 +35,7 @@ describe("Food", () => {
             calories: 124
         };
 
-        expect(() => new Food('', 'g', baseValues)).toThrowError(EmptyFoodNameError);
+        expect(() => new Food('', Units.GRAM, baseValues)).toThrowError(EmptyFoodNameError);
     });
 
     test("create food with 0 amount", () => {
@@ -45,7 +47,7 @@ describe("Food", () => {
             calories: 124
         };
 
-        expect(() => new Food('rice', 'g', baseValues)).toThrowError(InvalidFoodAmount);
+        expect(() => new Food('rice', Units.GRAM, baseValues)).toThrowError(InvalidFoodAmount);
 
     });
 
@@ -58,7 +60,7 @@ describe("Food", () => {
             calories: 124
         };
 
-        const food = new Food('rice', 'g', baseValues);
+        const food = new Food('rice', Units.GRAM, baseValues);
 
         food.changeAmount(23);
 
@@ -74,7 +76,7 @@ describe("Food", () => {
             calories: 124
         };
 
-        const food = new Food('rice', 'g', baseValues);
+        const food = new Food('rice', Units.GRAM, baseValues);
         expect(() => food.changeAmount(-23)).toThrowError(InvalidFoodAmount);
     });
 
@@ -87,7 +89,7 @@ describe("Food", () => {
             calories: 124
         };
 
-        const food = new Food('rice', 'g', baseValues);
+        const food = new Food('rice', Units.GRAM, baseValues);
         food.changeAmount(87);
         expect(food.getCurrentValues().calories).toEqual(108);
     })
